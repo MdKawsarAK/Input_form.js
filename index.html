@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="f">
+        <div>
+            Name<br>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div>
+            City<br>
+            <select name="city" id="city">
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Rajshahi">Rajshahi</option>
+            </select>
+        </div>
+        <div>
+            Gender<br>
+            <input class="gender" type="radio" name="gender" value="Male" /> Male<br>
+            <input class="gender" type="radio" name="gender" value="Female" /> Female<br>
+          
+        </div>
+        <div>
+            Subjects<br>
+            <input class="subjects" type="checkbox" name="subjects" value="Bengali" /> Bengali<br>
+            <input class="subjects" type="checkbox" name="subjects" value="English" /> English<br>
+            <input class="subjects" type="checkbox" name="subjects" value="Math" /> Math<br>
+            <input class="subjects" type="checkbox" name="subjects" value="History" /> History<br>
+           
+        </div>
+        <div>
+            Address<br>
+            <textarea name="address" id="address"></textarea>
+        </div>
+        <div>
+            <input type="button" value="Submit" name="btn" id="btn" />
+        </div>        
+    </form>
+    <script>           
+        let btn=document.querySelector("#btn");
+        btn.addEventListener("click",(e)=>{
+           let name=document.f.name.value;
+           let city=document.f.city.value;
+           let address=document.f.address.value;
+
+
+           let subjects="";
+            for(let box of document.querySelectorAll(".subjects")){
+                if(box.checked){
+                    subjects+=box.value+", ";
+                }
+            } 
+
+            let gender="";
+            for(let box of document.querySelectorAll(".gender")){
+                if(box.checked){
+                    gender=box.value;
+                }
+            } 
+
+
+
+           let center=screen.width/2-250;
+           let w=open("","",`width=500,height=600,left=${center}`);
+
+           w.document.write(`Name:${name}<br>`);
+           w.document.write(`City:${city}<br>`);
+           w.document.write(`Gender:${gender}<br>`);
+           w.document.write(`Subjects:${subjects}<br>`);
+           w.document.write(`Address:${address}<br>`);
+        });
+    </script>
+</body>
+</html>
